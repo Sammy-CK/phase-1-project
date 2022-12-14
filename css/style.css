@@ -3,7 +3,7 @@ nav {
 }
 
 .searchForm {
-    display : none;
+    visibility : hidden;
 }
 
 body { 
@@ -14,3 +14,9 @@ body {
 section{
     opacity: 0.8;
 }
+
+.point{
+    cursor: pointer;
+    text-decoration: overline;
+}
+

@@ -31,9 +31,13 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('hello')
         logInSection.remove()
         alert(`Welcome ${userName.value}`)
-        searchForm[0].style.display = 'inline'
-        searchForm[1].style.display = 'inline'
-        welcomeP.innerText = `${userName.value}`
+        searchForm[0].style.visibility = 'visible'
+        searchForm[1].style.visibility = 'visible'
+        searchForm[2].style.visibility = 'visible'
+        searchForm[3].style.visibility = 'visible'
+        searchForm[4].style.visibility = 'visible'
+
+        welcomeP.style.display = `none`
     })
 
 

@@ -12,25 +12,37 @@
 </head>
 
 <body>
-
-    <nav class="navbar text-dark bg-secondary bg-transparent pb-0 position-sticky sticky-top">
+    <!-- nav for search and logo -->
+    <nav class="navbar text-dark bg-secondary bg-transparent pb-0 position-sticky sticky-top ">
         <div class="container-fluid">
-            <p class="navbar-brand fs-3 ps-3 text text-dark">
+            <p class="navbar-brand fs-3 pe-1 text text-dark">
                 <img src="./images/beer.jpeg" width="62px" style="border-radius: 50%;">Brewer Finders
             </p>
-            <p class="navbar-brand fs-3 ps-3 text text-dark">
-                Brewer Finders
+            <p class="navbar-brand fs-5 ps-1 pe-1 text text-danger searchForm text-decoration-overline point">
+                <b>BREWERIES</b>
             </p>
-
-
-            <form class="d-flex pb-4" role="search">
+            <p class="navbar-brand fs-5 ps-1 pe-1 text text-danger searchForm text-decoration-overline point">
+                <b>FAVOURITES</b>
+            </p>
+            <p class="navbar-brand fs-5 ps-1 pe-1 text text-danger searchForm text-decoration-overline point">
+                <b>SEARCH</b>
+            </p>
+            <p class="fs-4 text-dark" style="color:brown;" id="welcomeUserP">Best place for your favourite Brewery</p>
+            <form class="d-flex pb-4 float-right" role="search">
                 <input class="form-control me-2 searchForm" type="search" placeholder="Find Brewery..."
                     aria-label="Search">
-                <button class="btn btn-dark searchForm" type="submit">Search</button>
+                <button class="btn btn-dark searchForm " type="submit">Search</button>
             </form>
-            <p class="float-right fs-4" id="welcomeUserP">Best place for your favourite Brewery</p>
+
         </div>
+
     </nav>
+
+
+
+
+
+
 
     <section class="vh-100 gradient-custom" id="logInSection">
         <div class="container py-5 h-100">
