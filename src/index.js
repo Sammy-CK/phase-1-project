@@ -2,6 +2,8 @@ const logInForm = document.querySelector('#logInForm');
 const userName = document.querySelector('#userName')
 const logInSection = document.querySelector('#logInSection')
 const signUpLink = document.querySelector('#signUp')
+const searchForm = document.querySelectorAll('.searchForm')
+const welcomeP = document.querySelector('#welcomeUserP')
 
 document.addEventListener('DOMContentLoaded', () => {
     let c = 2;
@@ -27,8 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
     logInForm.addEventListener('submit', (e) => {
         e.preventDefault()
         console.log('hello')
-        logInSection.style.display = 'none'
+        logInSection.remove()
         alert(`Welcome ${userName.value}`)
+        searchForm[0].style.display = 'inline'
+        searchForm[1].style.display = 'inline'
+        welcomeP.innerText = `${userName.value}`
     })
 
 

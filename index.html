@@ -12,14 +12,23 @@
 </head>
 
 <body>
-    <nav class="navbar text-dark bg-secondary bg-gradient pb-0">
+
+    <nav class="navbar text-dark bg-secondary bg-transparent pb-0 position-sticky sticky-top">
         <div class="container-fluid">
-            <p class="navbar-brand fs-3 text text-dark"><img src="./images/beer.jpeg" width="62px"
-                    style="border-radius: 50%;">Brewer Finders</p>
+            <p class="navbar-brand fs-3 ps-3 text text-dark">
+                <img src="./images/beer.jpeg" width="62px" style="border-radius: 50%;">Brewer Finders
+            </p>
+            <p class="navbar-brand fs-3 ps-3 text text-dark">
+                Brewer Finders
+            </p>
+
+
             <form class="d-flex pb-4" role="search">
-                <input class="form-control me-2" type="search" placeholder="Find Brewery..." aria-label="Search">
-                <button class="btn btn-dark" type="submit">Search</button>
+                <input class="form-control me-2 searchForm" type="search" placeholder="Find Brewery..."
+                    aria-label="Search">
+                <button class="btn btn-dark searchForm" type="submit">Search</button>
             </form>
+            <p class="float-right fs-4" id="welcomeUserP">Best place for your favourite Brewery</p>
         </div>
     </nav>
 
