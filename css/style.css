@@ -2,7 +2,7 @@ nav {
     max-height: 80px;
 }
 
-.searchForm {
+.navTools {
     visibility : hidden;
 }
 
@@ -20,3 +20,17 @@ section{
     text-decoration: overline;
 }
 
+a:active {
+    color: orange !important;
+    font-weight: bolder;
+}
+
+.centerDiv{
+    margin :auto ;
+    margin : 20px 200px;
+    /* text-align: center; */
+    background-color: beige;
+    list-style-type: none;
+    opacity: 0.85;
+    border-radius: 40px;
+}
