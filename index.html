@@ -28,12 +28,7 @@
                 MY COLLECTION
             </a>
             <p class="fs-4 text-dark" style="color:brown;" id="welcomeUserP">Best place for your favourite Brewery</p>
-            <form class="d-flex pb-4 float-right" role="search">
-                <input class="form-control me-2 searchForm" type="search" placeholder="Find Brewery..."
-                    aria-label="Search">
-                <button class="btn btn-dark searchForm" type="submit">Search</button>
-            </form>
-
+ 
         </div>
 
     </nav>
@@ -93,8 +88,18 @@
         </ul>
     </div>
 
-    <div id="searchPage">
+    <div id="searchPage" class="ms-4 me-4">
+        <h4>Search</h4>
+<hr>
+        <form class="d-flex pb-4 float-right" role="search" id="searchForm">
+            <input class="form-control me-2 searchForm" type="search" placeholder="Find Brewery..."
+                aria-label="Search">
+            <button class="btn btn-dark searchForm" type="submit">Search</button>
+        </form>
+<br>
+        <ul id="searchUl">
 
+        </ul>
     </div>
 
     <div id="favPage">

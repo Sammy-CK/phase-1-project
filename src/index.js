@@ -1,4 +1,4 @@
-const logInForm = document.querySelector('#logInForm');
+const logInForm = document.querySelector('#logInForm')
 const userName = document.querySelector('#userName')
 const logInSection = document.querySelector('#logInSection')
 const signUpLink = document.querySelector('#signUp')
@@ -11,10 +11,12 @@ const collectMenu = document.querySelector('#collectionOption')
 const landingPage = document.querySelector('#landingPage')
 const searchPage = document.querySelector('#searchPage')
 const favPage = document.querySelector('#favPage')
-
-
+const searchUl = document.querySelector('#searchUl')
+// const searchForm = document.querySelector('#')
 
 document.addEventListener('DOMContentLoaded', () => {
+            searchPage.style.display = "none";
+        favPage.style.display = "none";
     let c = 2;
     signUpLink.addEventListener("click", () => {
         authentication(c);
@@ -24,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     logInForm.addEventListener('submit', (e) => {
         e.preventDefault()
         landPage()
+
         breweryMenu.style.backgroundColor = 'black'
         fetch('https://api.openbrewerydb.org/breweries?per_page=50')
             .then(resp => resp.json())
@@ -36,6 +39,14 @@ document.addEventListener('DOMContentLoaded', () => {
         breweryMenu.addEventListener('click',() => {
             showPage(landingPage, searchPage, favPage)
             menuOptionColor(breweryMenu, searchMenu, collectMenu)
+        })
+
+        searchMenu.addEventListener('click', () => {
+            showPage(searchPage, landingPage, favPage)
+            menuOptionColor(searchMenu, breweryMenu, collectMenu)
+            searchPage.className = "centerDiv"
+            
+
         })
 
     })
@@ -116,9 +127,9 @@ function breweryToLandingPage(brewery) {
 
 //show current page depending on menu selection
 function showPage(shown, hidden1, hidden2){
-    shown.style.visibility = "visible"
-    hidden1.style.visibility = "hidden"
-    hidden2.style.visibility = "hidden"
+    shown.style.display = "block"
+    hidden1.style.display = "none"
+    hidden2.style.display = "none"
 }
 
 //menu options change color

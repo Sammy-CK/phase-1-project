@@ -40,6 +40,14 @@ a:active {
     color: black;
 }
 
-.searchForm{
+/* .searchForm{
     display: none;
+} */
+
+#searchForm{
+    margin-top: 20px;
+}
+
+h4{
+    color : transparent;
 }
