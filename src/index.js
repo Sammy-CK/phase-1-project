@@ -12,7 +12,8 @@ const landingPage = document.querySelector('#landingPage')
 const searchPage = document.querySelector('#searchPage')
 const favPage = document.querySelector('#favPage')
 const searchUl = document.querySelector('#searchUl')
-// const searchForm = document.querySelector('#')
+const searchInput = document.querySelector('#searchInput')
+const searchForm = document.querySelector('#searchForm')
 
 document.addEventListener('DOMContentLoaded', () => {
             searchPage.style.display = "none";
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(resp => resp.json())
             .then(data => {
                 data.forEach((brewery) => {
-                    breweryToLandingPage(brewery)
+                    breweryToPage(brewery, brewerUl)
                 })
             })
         
@@ -45,6 +46,18 @@ document.addEventListener('DOMContentLoaded', () => {
             showPage(searchPage, landingPage, favPage)
             menuOptionColor(searchMenu, breweryMenu, collectMenu)
             searchPage.className = "centerDiv"
+
+            searchForm.addEventListener('submit', (e) => {
+                e.preventDefault()
+                searchUl.innerHTML = '';
+                fetch(`https://api.openbrewerydb.org/breweries/search?query=${searchInput.value}`)
+                .then(resp => resp.json())
+                .then(data => {
+                    data.forEach(brewery => {
+                        breweryToPage(brewery, searchUl)
+                    })
+                })
+            })
             
 
         })
@@ -99,7 +112,7 @@ function showBreweryDetails(moreDetails, brewery, counter) {
 }
 
 //Adds all breweries to the breweries landing page
-function breweryToLandingPage(brewery) {
+function breweryToPage(brewery, currentUl) {
     let liBrewery = document.createElement('li')
     let detailsBtn = document.createElement('button')
     let moreDetails = document.createElement('div')
@@ -114,8 +127,8 @@ function breweryToLandingPage(brewery) {
     liBrewery.appendChild(moreDetails)
     liBrewery.style.borderBottom = "thick solid black"
     liBrewery.style.paddingBottom = "10px"
-    brewerUl.appendChild(liBrewery)
-    brewerUl.className = "centerDiv"
+    currentUl.appendChild(liBrewery)
+    currentUl.className = "centerDiv"
 
     let counter = 2
     detailsBtn.addEventListener('click', () => {
