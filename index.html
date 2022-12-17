@@ -19,7 +19,7 @@
                 <img src="./images/beer.jpeg" width="62px" style="border-radius: 50%;">Brewer Finders
             </p>
             <a class="navbar-brand fs-5 ps-1 pe-1 text text-danger navTools text-decoration-overline point" id="breweryMenu">
-                BREWERIES
+                POPULAR BREWERIES
             </a>
             <a class="navbar-brand fs-5 ps-1 pe-1 text text-danger navTools text-decoration-overline point" id="searchOption">
                 SEARCH
@@ -96,6 +96,21 @@
                 aria-label="Search" id="searchInput">
             <button class="btn btn-dark searchForm" type="submit">Search</button>
         </form>
+        <div id="options">
+        <select id="filterOptions">
+            <option value="micro">micro</option>
+            <option value="nano">nano</option>
+            <option value="regional">regional</option>
+            <option value="brewpub">brewpub</option>
+            <option value="large">large</option>
+            <option value="planning">planning</option>
+            <option value="bar">bar</option>
+            <option value="contract">contract</option>
+            <option value="proprietor">proprietor</option>
+            <option value="closed">closed</option>
+        </select>
+        <button id="filterBtn">FILTER</button>
+    </div>
 <br>
         <ul id="searchUl">
 

@@ -14,10 +14,12 @@ const favPage = document.querySelector('#favPage')
 const searchUl = document.querySelector('#searchUl')
 const searchInput = document.querySelector('#searchInput')
 const searchForm = document.querySelector('#searchForm')
+const filterOptions = document.querySelector('#filterOptions')
+const filterBtn = document.querySelector('#filterBtn')
 
 document.addEventListener('DOMContentLoaded', () => {
-            searchPage.style.display = "none";
-        favPage.style.display = "none";
+    searchPage.style.display = "none";
+    favPage.style.display = "none";
     let c = 2;
     signUpLink.addEventListener("click", () => {
         authentication(c);
@@ -36,8 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     breweryToPage(brewery, brewerUl)
                 })
             })
-        
-        breweryMenu.addEventListener('click',() => {
+
+        breweryMenu.addEventListener('click', () => {
             showPage(landingPage, searchPage, favPage)
             menuOptionColor(breweryMenu, searchMenu, collectMenu)
         })
@@ -46,19 +48,27 @@ document.addEventListener('DOMContentLoaded', () => {
             showPage(searchPage, landingPage, favPage)
             menuOptionColor(searchMenu, breweryMenu, collectMenu)
             searchPage.className = "centerDiv"
+            searchUl.innerHTML = '';
 
             searchForm.addEventListener('submit', (e) => {
                 e.preventDefault()
                 searchUl.innerHTML = '';
                 fetch(`https://api.openbrewerydb.org/breweries/search?query=${searchInput.value}`)
-                .then(resp => resp.json())
-                .then(data => {
-                    data.forEach(brewery => {
-                        breweryToPage(brewery, searchUl)
+                    .then(resp => resp.json())
+                    .then(data => {
+                        data.forEach(brewery => {
+                            breweryToPage(brewery, searchUl)
+
+                        })
+                        searchForm.reset()
+                        filterBtn.addEventListener('click', () => {
+                            filterResults(filterOptions)
+
+                        })
+
                     })
-                })
             })
-            
+
 
         })
 
@@ -88,10 +98,10 @@ function authentication(c) {
 function landPage() {
     logInSection.remove()
     alert(`Welcome ${userName.value}`)
-    for(const x of navTools){
+    for (const x of navTools) {
         x.style.visibility = "visible"
     }
- welcomeP.innerHTML = ` <img src="./images/clinkbeer.gif" width="120px" style="border-radius: 20%;">`
+    welcomeP.innerHTML = ` <img src="./images/clinkbeer.gif" width="120px" style="border-radius: 20%;">`
 }
 
 //show brewery details
@@ -120,8 +130,10 @@ function breweryToPage(brewery, currentUl) {
 
     liBrewery.innerHTML = `
 <h2>${brewery.name}</h2>
-<p><i>TYPE: </i><b>${brewery.brewery_type}</b></p>
-`
+<p><i>TYPE: </i>
+<b>${brewery.brewery_type}</b>
+</p>`
+
     detailsBtn.innerText = "Details"
     liBrewery.appendChild(detailsBtn)
     liBrewery.appendChild(moreDetails)
@@ -139,15 +151,31 @@ function breweryToPage(brewery, currentUl) {
 
 
 //show current page depending on menu selection
-function showPage(shown, hidden1, hidden2){
+function showPage(shown, hidden1, hidden2) {
     shown.style.display = "block"
     hidden1.style.display = "none"
     hidden2.style.display = "none"
 }
 
 //menu options change color
-function menuOptionColor(current, other1, other2){
+function menuOptionColor(current, other1, other2) {
     current.style.backgroundColor = "black"
     other1.style.backgroundColor = ""
     other2.style.backgroundColor = ""
+}
+
+//filter search results
+function filterResults(filterOptions) {
+    let resultsLi = searchUl.querySelectorAll('li')
+
+    resultsLi.forEach(result => {
+        let typeResult = result.querySelector('b')
+        if (typeResult.innerText !== filterOptions.value) {
+            result.style.display = "none"
+        } else {
+            result.style.display = ""
+        }
+
+
+    })
 }
