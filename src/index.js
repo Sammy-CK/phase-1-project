@@ -12,6 +12,7 @@ const landingPage = document.querySelector('#landingPage')
 const searchPage = document.querySelector('#searchPage')
 const favPage = document.querySelector('#favPage')
 const searchUl = document.querySelector('#searchUl')
+const favUl = document.querySelector('#favUl')
 const searchInput = document.querySelector('#searchInput')
 const searchForm = document.querySelector('#searchForm')
 const filterOptions = document.querySelector('#filterOptions')
@@ -76,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         collectMenu.addEventListener('click', () => {
             showPage(favPage, searchPage, landingPage)
             menuOptionColor(collectMenu, searchMenu, breweryMenu)
+            favPage.className = "centerDiv"
         })
 
 
@@ -136,14 +138,14 @@ function breweryToPage(brewery, currentUl) {
     moreDetails.style.textAlign = "center"
 
     liBrewery.innerHTML = `
-<img class="liker" style="float: right;" src="./images/like.png">
-<small style="float: right;">Add collection </small>
+
 <h2>${brewery.name}</h2>
 <p><i>TYPE: </i>
 <b>${brewery.brewery_type}</b>
-
-
-</p>`
+</p>
+<img class="liker" style="float: right;" src="./images/like.png">
+<small style="float: right;">Add collection </small>
+`
 
     detailsBtn.innerText = "Details"
     liBrewery.appendChild(detailsBtn)
@@ -158,15 +160,15 @@ function breweryToPage(brewery, currentUl) {
         showBreweryDetails(moreDetails, brewery, counter)
         counter++
     })
-    console.log('hey')
-//start
+
+    //start
     let likercount = 2
 
     let liker = liBrewery.querySelector('img')
-    console.log(liker)
     liker.addEventListener('click', () => {
         if(likercount % 2 === 0){
             liker.src = "./images/liked.png"
+            breweryToPage(brewery, favUl)
         }else{
             liker.src = "./images/like.png"
         }
