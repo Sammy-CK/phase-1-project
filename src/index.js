@@ -72,6 +72,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         })
 
+
+        collectMenu.addEventListener('click', () => {
+            showPage(favPage, searchPage, landingPage)
+            menuOptionColor(collectMenu, searchMenu, breweryMenu)
+        })
+
+
     })
 
 })
@@ -129,9 +136,13 @@ function breweryToPage(brewery, currentUl) {
     moreDetails.style.textAlign = "center"
 
     liBrewery.innerHTML = `
+<img class="liker" style="float: right;" src="./images/like.png">
+<small style="float: right;">Add collection </small>
 <h2>${brewery.name}</h2>
 <p><i>TYPE: </i>
 <b>${brewery.brewery_type}</b>
+
+
 </p>`
 
     detailsBtn.innerText = "Details"
@@ -147,6 +158,28 @@ function breweryToPage(brewery, currentUl) {
         showBreweryDetails(moreDetails, brewery, counter)
         counter++
     })
+    console.log('hey')
+//start
+    let likercount = 2
+
+    let liker = liBrewery.querySelector('img')
+    console.log(liker)
+    liker.addEventListener('click', () => {
+        if(likercount % 2 === 0){
+            liker.src = "./images/liked.png"
+        }else{
+            liker.src = "./images/like.png"
+        }
+      likercount++ 
+
+
+    })
+    
+
+
+
+//end
+
 }
 
 
