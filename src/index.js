@@ -183,29 +183,23 @@ let remover = liBrewery.querySelector('#Remover')
     })
 
     //start
-    let likercount = 2
-
     let liker = liBrewery.querySelector('img')
     liker.addEventListener('click', () => {
-        if (likercount % 2 === 0) {
-            liker.src = "./images/liked.png"
+        console.log(liker.src)
+        if (liker.src === "http://127.0.0.1:5500/images/like.png") {
+            liker.src = "http://127.0.0.1:5500/images/liked.png"
             breweryToPage(brewery, favUl)
         } else {
-            liker.src = "./images/like.png"
-
+            liker.src = "http://127.0.0.1:5500/images/like.png"
 
             for (let liFav of favUl.children) {
-
                 if ((liFav.querySelector('h2')).innerText === (liBrewery.querySelector('h2')).innerText) {
                     liFav.remove();
                 } else {
-
                 }
 
             }
         }
-        likercount++
-
 
     })
 
