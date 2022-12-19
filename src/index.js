@@ -131,7 +131,7 @@ function showBreweryDetails(moreDetails, brewery, counter) {
     if (counter % 2 === 0) {
         moreDetails.innerHTML = ''
         moreDetails.innerHTML = `
-<p><b>Address:</b> ${brewery.street} ${brewery.city} ${brewery.state}</p>
+<p><b>Address:</b> <i>${brewery.street} ${brewery.city} ${brewery.state}</i></p>
 <p><b>Telephone:</b> <a href="tel:${brewery.phone}">${brewery.phone}</a></p>
 <p><b>Website:</b> <a href="${brewery.website_url}" target="_blank" class="${(brewery.website_url === null) ? "noSite" : ""}">${(brewery.website_url === null) ? `No WEBSITE` : brewery.website_url}</a></p>
 <p><b>Country: </b>${brewery.country}</p>
@@ -158,10 +158,10 @@ function breweryToPage(brewery, currentUl) {
 </p>
 <img class="liker" style="float: right;" src="./images/like.png">
 <small style="float: right;">Add collection </small>
-<input id="Remover" type="button" style="float: right;" class="noDisplay" value="REMOVE">
+<input id="remover" type="button" style="float: right;" class="noDisplay" value="REMOVE">
 
 `
-let remover = liBrewery.querySelector('#Remover')
+let remover = liBrewery.querySelector('#remover')
 
     remover.addEventListener('click', () => {
         liBrewery.remove()
