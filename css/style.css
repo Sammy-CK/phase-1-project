@@ -55,3 +55,7 @@ h4{
 #options{
     text-align: center;
 }
+
+.noDisplay{
+    display: none;
+}

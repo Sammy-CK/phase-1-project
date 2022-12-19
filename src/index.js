@@ -145,6 +145,8 @@ function breweryToPage(brewery, currentUl) {
 </p>
 <img class="liker" style="float: right;" src="./images/like.png">
 <small style="float: right;">Add collection </small>
+<input type="button" style="float: right;" class="noDisplay" value="REMOVE">
+
 `
 
     detailsBtn.innerText = "Details"
@@ -166,21 +168,32 @@ function breweryToPage(brewery, currentUl) {
 
     let liker = liBrewery.querySelector('img')
     liker.addEventListener('click', () => {
-        if(likercount % 2 === 0){
+        if (likercount % 2 === 0) {
             liker.src = "./images/liked.png"
             breweryToPage(brewery, favUl)
-        }else{
+        } else {
             liker.src = "./images/like.png"
+
+
+            for (let liFav of favUl.children) {
+
+                if ((liFav.querySelector('h2')).innerText === (liBrewery.querySelector('h2')).innerText) {
+                    liFav.remove();
+                } else {
+
+                }
+
+            }
         }
-      likercount++ 
+        likercount++
 
 
     })
-    
 
 
 
-//end
+
+    //end
 
 }
 
