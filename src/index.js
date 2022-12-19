@@ -156,7 +156,7 @@ function breweryToPage(brewery, currentUl) {
 <p><i>TYPE: </i>
 <b>${brewery.brewery_type}</b>
 </p>
-<img class="liker" style="float: right;" src="./images/like.png">
+<img class="liker" style="float: right;" src="https://sammy-ck.github.io/phase-1-project/images/like.png">
 <small style="float: right;">Add collection </small>
 <input id="remover" type="button" style="float: right;" class="noDisplay" value="REMOVE">
 
@@ -186,11 +186,11 @@ let remover = liBrewery.querySelector('#remover')
     let liker = liBrewery.querySelector('img')
     liker.addEventListener('click', () => {
         console.log(liker.src)
-        if (liker.src === "http://127.0.0.1:5500/images/like.png") {
-            liker.src = "http://127.0.0.1:5500/images/liked.png"
+        if (liker.src === "https://sammy-ck.github.io/phase-1-project/images/like.png") {
+            liker.src = "https://sammy-ck.github.io/phase-1-project/images/liked.png"
             breweryToPage(brewery, favUl)
         } else {
-            liker.src = "http://127.0.0.1:5500/images/like.png"
+            liker.src = "https://sammy-ck.github.io/phase-1-project/images/like.png"
 
             for (let liFav of favUl.children) {
                 if ((liFav.querySelector('h2')).innerText === (liBrewery.querySelector('h2')).innerText) {
