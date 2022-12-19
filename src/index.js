@@ -78,6 +78,19 @@ document.addEventListener('DOMContentLoaded', () => {
             showPage(favPage, searchPage, landingPage)
             menuOptionColor(collectMenu, searchMenu, breweryMenu)
             favPage.className = "centerDiv"
+//start
+let favsLi = favUl.querySelectorAll('li')
+
+favsLi.forEach(fav => {
+fav.querySelector('input').classList.remove('noDisplay')
+fav.querySelector('img').classList.add('noDisplay')
+fav.querySelector('small').classList.add('noDisplay')
+
+})
+
+
+
+//end
         })
 
 
@@ -145,9 +158,15 @@ function breweryToPage(brewery, currentUl) {
 </p>
 <img class="liker" style="float: right;" src="./images/like.png">
 <small style="float: right;">Add collection </small>
-<input type="button" style="float: right;" class="noDisplay" value="REMOVE">
+<input id="Remover" type="button" style="float: right;" class="noDisplay" value="REMOVE">
 
 `
+let remover = liBrewery.querySelector('#Remover')
+
+    remover.addEventListener('click', () => {
+        liBrewery.remove()
+    })
+
 
     detailsBtn.innerText = "Details"
     liBrewery.appendChild(detailsBtn)
