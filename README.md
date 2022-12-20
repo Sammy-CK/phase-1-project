@@ -1,7 +1,7 @@
 # Phase-1-project-Brewers-Finders
-Moringa School phase-1-project Brewers Finders is a web-app to find your favourite breweries. It utilizes data from open brewery DB
+Moringa School phase-1-project Brewers Finders is a web-app to find your favourite breweries. It utilizes data from open brewery DB API
 
-        https://api.openbrewerydb.org/breweries/
+        https://api.openbrewerydb.org/
 
 ## Description
 The goal of Brewers finders online web-app is to maintain a digital record and provide access
@@ -10,7 +10,7 @@ expected to provide a user experience that allows:
 
 1) LogIn and Authentication with dummy data
 
-2) Accesses majority breweries 
+2) Access to major breweries 
 
 3) Provides information on breweries
 
@@ -51,6 +51,10 @@ To use this repo on your machine requires some simple steps
 
         cd phase-1-project
 
+- Install javascript dependencies
+
+          npm install
+
 ### Running the application
 To open site in browser run while inside the cloned repo:
 
@@ -58,9 +62,9 @@ To open site in browser run while inside the cloned repo:
 
 Run program from the index.html file in browser.
 
-This is what the app look like :
+This is what the app look like :<br>
 <img src="./images/sample.png" width="600px" height="300px">
-    
+
 
 # Author
 - [@Sammy-CK](https://www.github.com/Sammy-CK)
