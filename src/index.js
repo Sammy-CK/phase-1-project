@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         searchMenu.addEventListener('click', () => {
             showPage(searchPage, landingPage, favPage)
             menuOptionColor(searchMenu, breweryMenu, collectMenu)
-            searchPage.className = "centerDiv"
+            searchUl.className = "centerDiv"
             searchUl.innerHTML = '';
 
             searchForm.addEventListener('submit', (e) => {
@@ -59,8 +59,26 @@ document.addEventListener('DOMContentLoaded', () => {
                     .then(data => {
                         data.forEach(brewery => {
                             breweryToPage(brewery, searchUl)
+                         
 
+  })
+
+   let searchLis = searchUl.querySelectorAll('li')
+                           let favLis = favUl.querySelectorAll('li')
+                           
+                        searchLis.forEach(searchLi => {
+                           favLis.forEach(favLiEach => {
+                            if(searchLi.querySelector('i').innerText === favLiEach.querySelector('i').innerText){
+                                searchLi.querySelector('img').src = "https://sammy-ck.github.io/phase-1-project/images/liked.png"
+                                    }else{
+                                
+                                    }
+                                    
+                           })
                         })
+                           
+      
+                      
                         searchForm.reset()
                         filterBtn.addEventListener('click', () => {
                             filterResults(filterOptions)
@@ -77,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
         collectMenu.addEventListener('click', () => {
             showPage(favPage, searchPage, landingPage)
             menuOptionColor(collectMenu, searchMenu, breweryMenu)
-            favPage.className = "centerDiv"
+            favUl.className = "centerDiv"
 //start
 let favsLi = favUl.querySelectorAll('li')
 
@@ -202,8 +220,31 @@ breweryLi.querySelector('img').src = "https://sammy-ck.github.io/phase-1-project
         if (liker.src === "https://sammy-ck.github.io/phase-1-project/images/like.png") {
             liker.src = "https://sammy-ck.github.io/phase-1-project/images/liked.png"
             breweryToPage(brewery, favUl)
+
+            let breweryLis = brewerUl.querySelectorAll('li')
+
+            breweryLis.forEach(breweryLi => {
+                if(breweryLi.querySelector('i').innerText === liBrewery.querySelector('i').innerText){
+            breweryLi.querySelector('img').src = "https://sammy-ck.github.io/phase-1-project/images/liked.png"
+                }else{
+            
+                }
+            })
+
+
+
         } else {
             liker.src = "https://sammy-ck.github.io/phase-1-project/images/like.png"
+
+            let breweryLis = brewerUl.querySelectorAll('li')
+
+            breweryLis.forEach(breweryLi => {
+                if(breweryLi.querySelector('i').innerText === liBrewery.querySelector('i').innerText){
+            breweryLi.querySelector('img').src = "https://sammy-ck.github.io/phase-1-project/images/like.png"
+                }else{
+            
+                }
+            })
 
             for (let liFav of favUl.children) {
                 if ((liFav.querySelector('h2')).innerText === (liBrewery.querySelector('h2')).innerText) {
@@ -212,6 +253,12 @@ breweryLi.querySelector('img').src = "https://sammy-ck.github.io/phase-1-project
                 }
 
             }
+
+            
+
+
+
+
         }
 
     })
