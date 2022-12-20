@@ -20,6 +20,10 @@ const filterBtn = document.querySelector('#filterBtn')
 const randomBrewBtn = document.querySelector('#randomBrewBtn')
 const feedBackForm = document.querySelector('#feedBackForm')
 
+randomBrewBtn.addEventListener('click', () => {
+    showRandomBrewery(searchUl)
+})
+
 document.addEventListener('DOMContentLoaded', () => {
     searchPage.style.display = "none";
     favPage.style.display = "none";
@@ -28,7 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
         authentication(c);
         c++
     })
+//here
 
+//here
     logInForm.addEventListener('submit', (e) => {
         e.preventDefault()
         landPage()
@@ -48,20 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
 
 
-        randomBrewBtn.addEventListener('click', () => {
-            searchUl.innerHTML = '';
-            fetch(`https://api.openbrewerydb.org/breweries/random`)
-                .then(resp => resp.json())
-                .then(dataz => {
-                    console.log(dataz)
-                        breweryToPage(dataz[0], searchUl)
-                     
-                   
-})
 
-
-
-        })
 
 
 
@@ -326,3 +319,22 @@ function filterResults(filterOptions) {
 
     })
 }
+
+//show random brewery
+function showRandomBrewery(searchUl){
+    searchUl.innerHTML = '';
+    fetch(`https://api.openbrewerydb.org/breweries/random`,{
+        method : "GET",
+        headers : {
+            "ContentType" : "application/json",
+            Accept : "application/json"
+        }
+    })
+        .then(resp => resp.json())
+        .then(data => {
+            console.log(data)
+                breweryToPage(data[0], searchUl)
+
+               
+})
+  }
