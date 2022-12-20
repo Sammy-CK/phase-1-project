@@ -17,7 +17,6 @@ const searchInput = document.querySelector('#searchInput')
 const searchForm = document.querySelector('#searchForm')
 const filterOptions = document.querySelector('#filterOptions')
 const filterBtn = document.querySelector('#filterBtn')
-const randomBrewBtn = document.querySelector('#randomBrewBtn')
 const feedBackForm = document.querySelector('#feedBackForm')
 
 
@@ -95,10 +94,6 @@ function breweryAvailable() {
                 })
         })
 
-        randomBrewBtn.addEventListener('click', () => {
-            showRandomBrewery(searchUl)
-        })
-
         searchMenu.addEventListener('click', () => {
             showPage(searchPage, landingPage, favPage)
             menuOptionColor(searchMenu, breweryMenu, collectMenu)
@@ -106,7 +101,6 @@ function breweryAvailable() {
             searchUl.innerHTML = '';
 
         })
-
 
         collectMenu.addEventListener('click', () => {
             showPage(favPage, searchPage, landingPage)
@@ -298,14 +292,4 @@ function filterResults(filterOptions) {
         }
 
     })
-}
-
-//show random brewery
-function showRandomBrewery(searchUl) {
-    searchUl.innerHTML = '';
-    fetch(`https://api.openbrewerydb.org/breweries/random`)
-        .then(resp => resp.json())
-        .then(data => {
-            breweryToPage(data[0], searchUl)
-        })
 }
