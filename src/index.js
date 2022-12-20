@@ -17,6 +17,8 @@ const searchInput = document.querySelector('#searchInput')
 const searchForm = document.querySelector('#searchForm')
 const filterOptions = document.querySelector('#filterOptions')
 const filterBtn = document.querySelector('#filterBtn')
+const randomBrewBtn = document.querySelector('#randomBrewBtn')
+const feedBackForm = document.querySelector('#feedBackForm')
 
 document.addEventListener('DOMContentLoaded', () => {
     searchPage.style.display = "none";
@@ -45,48 +47,69 @@ document.addEventListener('DOMContentLoaded', () => {
             menuOptionColor(breweryMenu, searchMenu, collectMenu)
         })
 
+
+        randomBrewBtn.addEventListener('click', () => {
+            searchUl.innerHTML = '';
+            fetch(`https://api.openbrewerydb.org/breweries/random`)
+                .then(resp => resp.json())
+                .then(dataz => {
+                    console.log(dataz)
+                        breweryToPage(dataz[0], searchUl)
+                     
+                   
+})
+
+
+
+        })
+
+
+
+        searchForm.addEventListener('submit', (e) => {
+            e.preventDefault()
+            searchUl.innerHTML = '';
+            fetch(`https://api.openbrewerydb.org/breweries/search?query=${searchInput.value}`)
+                .then(resp => resp.json())
+                .then(data => {
+                    data.forEach(brewery => {
+                        breweryToPage(brewery, searchUl)
+                     
+
+})
+
+
+let searchLis = searchUl.querySelectorAll('li')
+                       let favLis = favUl.querySelectorAll('li')
+                       
+                    searchLis.forEach(searchLi => {
+                       favLis.forEach(favLiEach => {
+                        if(searchLi.querySelector('i').innerText === favLiEach.querySelector('i').innerText){
+                            searchLi.querySelector('img').src = "https://sammy-ck.github.io/phase-1-project/images/liked.png"
+                                }else{
+                            
+                                }
+                                
+                       })
+                    })
+                       
+  
+                  
+                    searchForm.reset()
+                    filterBtn.addEventListener('click', () => {
+                        filterResults(filterOptions)
+
+                    })
+
+                })
+        })
+
         searchMenu.addEventListener('click', () => {
             showPage(searchPage, landingPage, favPage)
             menuOptionColor(searchMenu, breweryMenu, collectMenu)
             searchUl.className = "centerDiv"
             searchUl.innerHTML = '';
+           
 
-            searchForm.addEventListener('submit', (e) => {
-                e.preventDefault()
-                searchUl.innerHTML = '';
-                fetch(`https://api.openbrewerydb.org/breweries/search?query=${searchInput.value}`)
-                    .then(resp => resp.json())
-                    .then(data => {
-                        data.forEach(brewery => {
-                            breweryToPage(brewery, searchUl)
-                         
-
-  })
-
-   let searchLis = searchUl.querySelectorAll('li')
-                           let favLis = favUl.querySelectorAll('li')
-                           
-                        searchLis.forEach(searchLi => {
-                           favLis.forEach(favLiEach => {
-                            if(searchLi.querySelector('i').innerText === favLiEach.querySelector('i').innerText){
-                                searchLi.querySelector('img').src = "https://sammy-ck.github.io/phase-1-project/images/liked.png"
-                                    }else{
-                                
-                                    }
-                                    
-                           })
-                        })
-                           
-      
-                      
-                        searchForm.reset()
-                        filterBtn.addEventListener('click', () => {
-                            filterResults(filterOptions)
-
-                        })
-
-                    })
-            })
 
 
         })
@@ -111,7 +134,10 @@ fav.querySelector('small').classList.add('noDisplay')
 //end
         })
 
-
+            feedBackForm.addEventListener('submit', (e) => {
+                e.preventDefault()
+                feedBackForm.innerHTML = "<b>Thank you for your feedback</b>"
+            })
     })
 
 })
