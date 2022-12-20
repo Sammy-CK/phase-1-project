@@ -1,0 +1,26 @@
+{
+  "name": "brewery-finders",
+  "version": "1.0.0",
+  "description": "A web app to find your favourite breweries",
+  "main": ".src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sammy-CK/phase-1-project.git"
+  },
+  "keywords": [
+    "html",
+    "JavaScript",
+    "css",
+    "bootstrap",
+    "brewery"
+  ],
+  "author": "Sammy-CK",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sammy-CK/phase-1-project/issues"
+  },
+  "homepage": "https://github.com/Sammy-CK/phase-1-project#readme"
+}
