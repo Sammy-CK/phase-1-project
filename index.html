@@ -7,38 +7,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/style.css">
-
     <title>Brewers Finders</title>
 </head>
 
 <body>
-    <!-- nav for search and logo -->
+
+    <!-- nav for menu options -->
     <nav class="navbar text-dark bg-secondary bg-transparent pb-0 position-sticky sticky-top ">
         <div class="container-fluid">
             <p class="navbar-brand fs-3 pe-1 text text-dark">
                 <img src="./images/beer.jpeg" width="62px" style="border-radius: 50%;">Brewer Finders
             </p>
-            <a class="navbar-brand fs-5 ps-1 pe-1 text text-danger navTools text-decoration-overline point" id="breweryMenu">
+            <a class="navbar-brand fs-5 ps-1 pe-1 text text-danger navTools text-decoration-overline point"
+                id="breweryMenu">
                 POPULAR BREWERIES
             </a>
-            <a class="navbar-brand fs-5 ps-1 pe-1 text text-danger navTools text-decoration-overline point" id="searchOption">
+            <a class="navbar-brand fs-5 ps-1 pe-1 text text-danger navTools text-decoration-overline point"
+                id="searchOption">
                 SEARCH
             </a>
-            <a class="navbar-brand fs-5 ps-1 pe-1 text text-danger navTools text-decoration-overline point" id="collectionOption">
+            <a class="navbar-brand fs-5 ps-1 pe-1 text text-danger navTools text-decoration-overline point"
+                id="collectionOption">
                 MY COLLECTION
             </a>
             <p class="fs-4 text-dark" style="color:brown;" id="welcomeUserP">Best place for your favourite Brewery</p>
- 
+
         </div>
 
     </nav>
 
-
-
-
-
-
-
+    <!-- LogIn and SignUp form -->
     <section class="vh-100 gradient-custom" id="logInSection">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
@@ -82,52 +80,56 @@
         </div>
     </section>
 
-    <div id="landingPage" class="ms-4 me-4"> 
+
+    <!-- Landing page with popular breweries -->
+    <div id="landingPage" class="ms-4 me-4">
         <ul id="contentUl">
 
         </ul>
     </div>
 
+    <!-- Search form and search page -->
     <div id="searchPage" class="ms-4 me-4">
         <h4>Search</h4>
-<hr>
+        <hr>
         <form class="d-flex pb-4 float-right" role="search" id="searchForm">
-            <input class="form-control me-2 searchForm" type="search" placeholder="Find Brewery..."
-                aria-label="Search" id="searchInput">
+            <input class="form-control me-2 searchForm" type="search" placeholder="Find Brewery..." aria-label="Search"
+                id="searchInput">
             <button class="btn btn-dark searchForm" type="submit">Search</button>
         </form>
 
-                    <button class="btn btn-dark searchForm" id="randomBrewBtn">RANDOM</button>
+        <button class="btn btn-dark searchForm" id="randomBrewBtn">RANDOM</button>
         <div id="options">
-        <select id="filterOptions">
-            <option value="micro">micro</option>
-            <option value="nano">nano</option>
-            <option value="regional">regional</option>
-            <option value="brewpub">brewpub</option>
-            <option value="large">large</option>
-            <option value="planning">planning</option>
-            <option value="bar">bar</option>
-            <option value="contract">contract</option>
-            <option value="proprietor">proprietor</option>
-            <option value="closed">closed</option>
-        </select>
-        <button id="filterBtn">FILTER</button>
-    </div>
-<br>
+            <select id="filterOptions">
+                <option value="micro">micro</option>
+                <option value="nano">nano</option>
+                <option value="regional">regional</option>
+                <option value="brewpub">brewpub</option>
+                <option value="large">large</option>
+                <option value="planning">planning</option>
+                <option value="bar">bar</option>
+                <option value="contract">contract</option>
+                <option value="proprietor">proprietor</option>
+                <option value="closed">closed</option>
+            </select>
+            <button id="filterBtn">FILTER</button>
+        </div>
+        <br>
         <ul id="searchUl">
 
         </ul>
     </div>
 
+    <!-- My collection page and feedback form -->
     <div id="favPage">
-<hr><hr><hr>
+        <hr>
+        <hr>
+        <hr>
         <form class="ms-5" id="feedBackForm">
-            <label for="feedBackInput" ><b>PPlease enter feedback here to improve our service</b></label><br>
-            <textarea placeholder="Enter feedback..."
-                 id="feedBackInput"></textarea><br>
+            <label for="feedBackInput"><b>Please enter feedback here to improve our service</b></label><br>
+            <textarea placeholder="Enter feedback..." id="feedBackInput"></textarea><br>
             <button class="btn btn-dark" type="submit">Submit</button>
         </form>
-
 
         <ul id="favUl">
 

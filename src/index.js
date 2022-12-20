@@ -20,21 +20,27 @@ const filterBtn = document.querySelector('#filterBtn')
 const randomBrewBtn = document.querySelector('#randomBrewBtn')
 const feedBackForm = document.querySelector('#feedBackForm')
 
-randomBrewBtn.addEventListener('click', () => {
-    showRandomBrewery(searchUl)
-})
+
 
 document.addEventListener('DOMContentLoaded', () => {
+    breweryAvailable();
+})
+
+
+
+//Appends breweries to page, allow search and saving
+function breweryAvailable() {
     searchPage.style.display = "none";
     favPage.style.display = "none";
     let c = 2;
+
+    //SignUp and LogIn option on form
     signUpLink.addEventListener("click", () => {
         authentication(c);
         c++
     })
-//here
 
-//here
+    //LogIn and SignUp loads landing page
     logInForm.addEventListener('submit', (e) => {
         e.preventDefault()
         landPage()
@@ -53,11 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
             menuOptionColor(breweryMenu, searchMenu, collectMenu)
         })
 
-
-
-
-
-
+        //Search for brewery from Database
         searchForm.addEventListener('submit', (e) => {
             e.preventDefault()
             searchUl.innerHTML = '';
@@ -66,27 +68,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then(data => {
                     data.forEach(brewery => {
                         breweryToPage(brewery, searchUl)
-                     
 
-})
-
-
-let searchLis = searchUl.querySelectorAll('li')
-                       let favLis = favUl.querySelectorAll('li')
-                       
-                    searchLis.forEach(searchLi => {
-                       favLis.forEach(favLiEach => {
-                        if(searchLi.querySelector('i').innerText === favLiEach.querySelector('i').innerText){
-                            searchLi.querySelector('img').src = "https://sammy-ck.github.io/phase-1-project/images/liked.png"
-                                }else{
-                            
-                                }
-                                
-                       })
                     })
-                       
-  
-                  
+
+                    let searchLis = searchUl.querySelectorAll('li')
+                    let favLis = favUl.querySelectorAll('li')
+
+                    //Align search, popular and saved brewery like 
+                    searchLis.forEach(searchLi => {
+                        favLis.forEach(favLiEach => {
+                            if (searchLi.querySelector('i').innerText === favLiEach.querySelector('i').innerText) {
+                                searchLi.querySelector('img').src = "https://sammy-ck.github.io/phase-1-project/images/liked.png"
+                            } else {
+
+                            }
+
+                        })
+                    })
+
                     searchForm.reset()
                     filterBtn.addEventListener('click', () => {
                         filterResults(filterOptions)
@@ -96,14 +95,15 @@ let searchLis = searchUl.querySelectorAll('li')
                 })
         })
 
+        randomBrewBtn.addEventListener('click', () => {
+            showRandomBrewery(searchUl)
+        })
+
         searchMenu.addEventListener('click', () => {
             showPage(searchPage, landingPage, favPage)
             menuOptionColor(searchMenu, breweryMenu, collectMenu)
             searchUl.className = "centerDiv"
             searchUl.innerHTML = '';
-           
-
-
 
         })
 
@@ -112,28 +112,24 @@ let searchLis = searchUl.querySelectorAll('li')
             showPage(favPage, searchPage, landingPage)
             menuOptionColor(collectMenu, searchMenu, breweryMenu)
             favUl.className = "centerDiv"
-//start
-let favsLi = favUl.querySelectorAll('li')
 
-favsLi.forEach(fav => {
-fav.querySelector('input').classList.remove('noDisplay')
-fav.querySelector('img').classList.add('noDisplay')
-fav.querySelector('small').classList.add('noDisplay')
-
-})
-
-
-
-//end
-        })
-
-            feedBackForm.addEventListener('submit', (e) => {
-                e.preventDefault()
-                feedBackForm.innerHTML = "<b>Thank you for your feedback</b>"
+            let favsLi = favUl.querySelectorAll('li')
+            // Remove button on collection breweries
+            favsLi.forEach(fav => {
+                fav.querySelector('input').classList.remove('noDisplay')
+                fav.querySelector('img').classList.add('noDisplay')
+                fav.querySelector('small').classList.add('noDisplay')
             })
+
+        })
+        //User feedback form
+        feedBackForm.addEventListener('submit', (e) => {
+            e.preventDefault()
+            feedBackForm.innerHTML = "<b>Thank you for your feedback</b>"
+        })
     })
 
-})
+}
 
 
 //user to login or sign up
@@ -169,7 +165,8 @@ function showBreweryDetails(moreDetails, brewery, counter) {
         moreDetails.innerHTML = ''
         moreDetails.innerHTML = `
 <p><b>Telephone:</b> <a href="tel:${brewery.phone}">${brewery.phone}</a></p>
-<p><b>Website:</b> <a href="${brewery.website_url}" target="_blank" class="${(brewery.website_url === null) ? "noSite" : ""}">${(brewery.website_url === null) ? `No WEBSITE` : brewery.website_url}</a></p>
+<p><b>Website:</b> <a href="${brewery.website_url}" target="_blank" class="${(brewery.website_url === null) ?
+                "noSite" : ""}">${(brewery.website_url === null) ? `No WEBSITE` : brewery.website_url}</a></p>
 <p><b>Country: </b>${brewery.country}</p>
                         `
         moreDetails.style.borderTop = "thin dotted black"
@@ -187,32 +184,28 @@ function breweryToPage(brewery, currentUl) {
     moreDetails.style.textAlign = "center"
 
     liBrewery.innerHTML = `
-
 <h2>${brewery.name}</h2>
 <p>TYPE:
 <b>${brewery.brewery_type}</b>
 </p>
 <p><b>Address:</b> <i>${brewery.street} ${brewery.city} ${brewery.state}</i></p>
-
 <img class="liker" style="float: right;" src="https://sammy-ck.github.io/phase-1-project/images/like.png">
 <small style="float: right;">Add collection </small>
 <input id="remover" type="button" style="float: right;" class="noDisplay" value="REMOVE">
-
 `
-let remover = liBrewery.querySelector('#remover')
-//hapa
-    remover.addEventListener('click', () => {
+
+    //Delete from collection
+    liBrewery.querySelector('#remover').addEventListener('click', () => {
         let breweryLis = brewerUl.querySelectorAll('li')
 
-breweryLis.forEach(breweryLi => {
-    if(breweryLi.querySelector('i').innerText === liBrewery.querySelector('i').innerText){
-breweryLi.querySelector('img').src = "https://sammy-ck.github.io/phase-1-project/images/like.png"
-    }else{
+        breweryLis.forEach(breweryLi => {
+            if (breweryLi.querySelector('i').innerText === liBrewery.querySelector('i').innerText) {
+                breweryLi.querySelector('img').src = "https://sammy-ck.github.io/phase-1-project/images/like.png"
+            } else {
 
-    }
+            }
 
-})
-//hapo
+        })
         liBrewery.remove()
 
     })
@@ -232,10 +225,10 @@ breweryLi.querySelector('img').src = "https://sammy-ck.github.io/phase-1-project
         counter++
     })
 
-    //start
     let liker = liBrewery.querySelector('img')
+
+    //Adds and removes likes
     liker.addEventListener('click', () => {
-        console.log(liker.src)
         if (liker.src === "https://sammy-ck.github.io/phase-1-project/images/like.png") {
             liker.src = "https://sammy-ck.github.io/phase-1-project/images/liked.png"
             breweryToPage(brewery, favUl)
@@ -243,14 +236,12 @@ breweryLi.querySelector('img').src = "https://sammy-ck.github.io/phase-1-project
             let breweryLis = brewerUl.querySelectorAll('li')
 
             breweryLis.forEach(breweryLi => {
-                if(breweryLi.querySelector('i').innerText === liBrewery.querySelector('i').innerText){
-            breweryLi.querySelector('img').src = "https://sammy-ck.github.io/phase-1-project/images/liked.png"
-                }else{
-            
+                if (breweryLi.querySelector('i').innerText === liBrewery.querySelector('i').innerText) {
+                    breweryLi.querySelector('img').src = "https://sammy-ck.github.io/phase-1-project/images/liked.png"
+                } else {
+
                 }
             })
-
-
 
         } else {
             liker.src = "https://sammy-ck.github.io/phase-1-project/images/like.png"
@@ -258,10 +249,10 @@ breweryLi.querySelector('img').src = "https://sammy-ck.github.io/phase-1-project
             let breweryLis = brewerUl.querySelectorAll('li')
 
             breweryLis.forEach(breweryLi => {
-                if(breweryLi.querySelector('i').innerText === liBrewery.querySelector('i').innerText){
-            breweryLi.querySelector('img').src = "https://sammy-ck.github.io/phase-1-project/images/like.png"
-                }else{
-            
+                if (breweryLi.querySelector('i').innerText === liBrewery.querySelector('i').innerText) {
+                    breweryLi.querySelector('img').src = "https://sammy-ck.github.io/phase-1-project/images/like.png"
+                } else {
+
                 }
             })
 
@@ -273,19 +264,9 @@ breweryLi.querySelector('img').src = "https://sammy-ck.github.io/phase-1-project
 
             }
 
-            
-
-
-
-
         }
 
     })
-
-
-
-
-    //end
 
 }
 
@@ -316,25 +297,15 @@ function filterResults(filterOptions) {
             result.style.display = ""
         }
 
-
     })
 }
 
 //show random brewery
-function showRandomBrewery(searchUl){
+function showRandomBrewery(searchUl) {
     searchUl.innerHTML = '';
-    fetch(`https://api.openbrewerydb.org/breweries/random`,{
-        method : "GET",
-        headers : {
-            "ContentType" : "application/json",
-            Accept : "application/json"
-        }
-    })
+    fetch(`https://api.openbrewerydb.org/breweries/random`)
         .then(resp => resp.json())
         .then(data => {
-            console.log(data)
-                breweryToPage(data[0], searchUl)
-
-               
-})
-  }
+            breweryToPage(data[0], searchUl)
+        })
+}

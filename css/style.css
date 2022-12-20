@@ -3,19 +3,19 @@ nav {
 }
 
 .navTools {
-    visibility : hidden;
+    visibility: hidden;
 }
 
-body { 
-    background: url(../images/jake-bradley-LnBisJEyVFE-unsplash.jpg) no-repeat center center fixed; 
+body {
+    background: url(../images/jake-bradley-LnBisJEyVFE-unsplash.jpg) no-repeat center center fixed;
     background-size: cover;
-  }
+}
 
-section{
+section {
     opacity: 0.8;
 }
 
-.point{
+.point {
     cursor: pointer;
     text-decoration: overline;
 }
@@ -25,9 +25,9 @@ a:active {
     font-weight: bolder;
 }
 
-.centerDiv{
-    margin :auto ;
-    margin : 20px 170px;
+.centerDiv {
+    margin: auto;
+    margin: 20px 170px;
     /* text-align: center; */
     background-color: beige;
     list-style-type: none;
@@ -35,27 +35,23 @@ a:active {
     border-radius: 40px;
 }
 
-.noSite{
+.noSite {
     text-decoration: none;
     color: black;
 }
 
-/* .searchForm{
-    display: none;
-} */
-
-#searchForm{
+#searchForm {
     margin-top: 20px;
 }
 
-h4{
-    color : transparent;
+h4 {
+    color: transparent;
 }
 
-#options{
+#options {
     text-align: center;
 }
 
-.noDisplay{
+.noDisplay {
     display: none;
 }
