@@ -131,7 +131,6 @@ function showBreweryDetails(moreDetails, brewery, counter) {
     if (counter % 2 === 0) {
         moreDetails.innerHTML = ''
         moreDetails.innerHTML = `
-<p><b>Address:</b> <i>${brewery.street} ${brewery.city} ${brewery.state}</i></p>
 <p><b>Telephone:</b> <a href="tel:${brewery.phone}">${brewery.phone}</a></p>
 <p><b>Website:</b> <a href="${brewery.website_url}" target="_blank" class="${(brewery.website_url === null) ? "noSite" : ""}">${(brewery.website_url === null) ? `No WEBSITE` : brewery.website_url}</a></p>
 <p><b>Country: </b>${brewery.country}</p>
@@ -153,18 +152,32 @@ function breweryToPage(brewery, currentUl) {
     liBrewery.innerHTML = `
 
 <h2>${brewery.name}</h2>
-<p><i>TYPE: </i>
+<p>TYPE:
 <b>${brewery.brewery_type}</b>
 </p>
+<p><b>Address:</b> <i>${brewery.street} ${brewery.city} ${brewery.state}</i></p>
+
 <img class="liker" style="float: right;" src="https://sammy-ck.github.io/phase-1-project/images/like.png">
 <small style="float: right;">Add collection </small>
 <input id="remover" type="button" style="float: right;" class="noDisplay" value="REMOVE">
 
 `
 let remover = liBrewery.querySelector('#remover')
-
+//hapa
     remover.addEventListener('click', () => {
+        let breweryLis = brewerUl.querySelectorAll('li')
+
+breweryLis.forEach(breweryLi => {
+    if(breweryLi.querySelector('i').innerText === liBrewery.querySelector('i').innerText){
+breweryLi.querySelector('img').src = "https://sammy-ck.github.io/phase-1-project/images/like.png"
+    }else{
+
+    }
+
+})
+//hapo
         liBrewery.remove()
+
     })
 
 
